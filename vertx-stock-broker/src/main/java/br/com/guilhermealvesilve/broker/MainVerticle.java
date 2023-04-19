@@ -1,6 +1,7 @@
 package br.com.guilhermealvesilve.broker;
 
 import br.com.guilhermealvesilve.broker.assets.AssertsRestApi;
+import br.com.guilhermealvesilve.quotes.QuotesRestApi;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Handler;
 import io.vertx.core.Promise;
@@ -8,13 +9,12 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class MainVerticle extends AbstractVerticle {
 
   public static final int PORT = 8888;
-  private static final Logger LOG = LoggerFactory.getLogger(MainVerticle.class);
 
   public static void main(String[] args) {
     var vertx = Vertx.vertx();
@@ -35,6 +35,7 @@ public class MainVerticle extends AbstractVerticle {
     final Router restApi = Router.router(vertx);
     restApi.route().failureHandler(handleFailure());
     AssertsRestApi.attach(restApi);
+    QuotesRestApi.attach(restApi);
 
     vertx.createHttpServer()
       .requestHandler(restApi)

@@ -1,4 +1,4 @@
-package br.com.guilhermealvesilve.broker.assets;
+package br.com.guilhermealvesilve.broker.quotes;
 
 import br.com.guilhermealvesilve.broker.MainVerticle;
 import io.vertx.core.Vertx;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @ExtendWith(VertxExtension.class)
-public class TestAssetsRestApi {
+public class TestQuotesRestApi {
 
   @BeforeEach
   void shouldDeployVerticle(Vertx vertx, VertxTestContext testContext) {

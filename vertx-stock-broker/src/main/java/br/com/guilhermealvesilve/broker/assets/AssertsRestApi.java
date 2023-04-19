@@ -1,14 +1,11 @@
 package br.com.guilhermealvesilve.broker.assets;
 
 import io.vertx.core.json.JsonArray;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class AssertsRestApi {
-
-  private static final Logger LOG = LoggerFactory.getLogger(AssertsRestApi.class);
 
   public static void attach(Router parent) {
     parent.get("/assets").handler(context -> {
