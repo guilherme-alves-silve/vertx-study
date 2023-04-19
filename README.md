@@ -64,6 +64,12 @@ To run your application:
 ./mvnw clean compile exec:java
 ```
 
+## GIT
+
+``
+git add . & git commit -m"Update" & git push
+``
+
 ## Help
 
 * https://vertx.io/docs/[Vert.x Documentation]
