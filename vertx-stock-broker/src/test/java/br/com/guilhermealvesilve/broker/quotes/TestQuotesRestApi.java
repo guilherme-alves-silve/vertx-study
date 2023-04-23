@@ -11,8 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @ExtendWith(VertxExtension.class)
@@ -24,20 +23,43 @@ public class TestQuotesRestApi {
   }
 
   @Test
-  void shouldReturnAllAssets(Vertx vertx, VertxTestContext testContext) throws Throwable {
+  void shouldReturnQuoteForAsset(Vertx vertx, VertxTestContext testContext) throws Throwable {
     var client = WebClient.create(vertx,
       new WebClientOptions().setDefaultPort(MainVerticle.PORT));
-    client.get("/assets")
+    client.get("/quotes/AMZN")
         .send()
         .onComplete(testContext.succeeding(response -> {
-          var expectedJson = "[{\"name\":\"AAPL\"},{\"name\":\"AMZN\"},{\"name\":\"NFLX\"},{\"name\":\"TSLA\"}]";
-          var json = response.bodyAsJsonArray();
+          var json = response.bodyAsJsonObject();
           LOG.info("Response: {}", json);
           assertAll(
-            () -> assertEquals(expectedJson, json.encode()),
+            () -> assertEquals("AMZN", json.getJsonObject("asset").getString("name")),
+            () -> assertInstanceOf(Number.class, json.getNumber("bid")),
+            () -> assertInstanceOf(Number.class, json.getNumber("ask")),
+            () -> assertInstanceOf(Number.class, json.getNumber("lastPrice")),
             () -> assertEquals(200, response.statusCode())
           );
           testContext.completeNow();
         }));
+  }
+
+
+  @Test
+  void shouldReturnNotFoundForUnkownAsset(Vertx vertx, VertxTestContext testContext) throws Throwable {
+    var client = WebClient.create(vertx,
+      new WebClientOptions().setDefaultPort(MainVerticle.PORT));
+    client.get("/quotes/UNKNOWN")
+      .send()
+      .onComplete(testContext.succeeding(response -> {
+        var expectedJson = "{\"message\":\"quote for asset UNKNOWN not available!\",\"path\":\"/quotes/UNKNOWN\"}";
+        var json = response.bodyAsJsonObject();
+        LOG.info("Response: {}", json);
+        assertAll(
+          () -> assertEquals("quote for asset UNKNOWN not available!", json.getString("message")),
+          () -> assertEquals("/quotes/UNKNOWN", json.getString("path")),
+          () -> assertEquals(expectedJson, json.encode()),
+          () -> assertEquals(404, response.statusCode())
+        );
+        testContext.completeNow();
+      }));
   }
 }

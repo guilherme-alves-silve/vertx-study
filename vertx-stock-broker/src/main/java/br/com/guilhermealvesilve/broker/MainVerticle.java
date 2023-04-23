@@ -1,7 +1,8 @@
 package br.com.guilhermealvesilve.broker;
 
-import br.com.guilhermealvesilve.broker.assets.AssertsRestApi;
-import br.com.guilhermealvesilve.quotes.QuotesRestApi;
+import br.com.guilhermealvesilve.broker.assets.AssetsRestApi;
+import br.com.guilhermealvesilve.broker.watchlist.WatchListRestApi;
+import br.com.guilhermealvesilve.broker.quotes.QuotesRestApi;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Handler;
 import io.vertx.core.Promise;
@@ -9,6 +10,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
+import io.vertx.ext.web.handler.BodyHandler;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -30,12 +32,15 @@ public class MainVerticle extends AbstractVerticle {
   }
 
   @Override
-  public void start(Promise<Void> startPromise) throws Exception {
+  public void start(Promise<Void> startPromise) {
 
     final Router restApi = Router.router(vertx);
-    restApi.route().failureHandler(handleFailure());
-    AssertsRestApi.attach(restApi);
+    restApi.route()
+      .handler(BodyHandler.create())
+      .failureHandler(handleFailure());
+    AssetsRestApi.attach(restApi);
     QuotesRestApi.attach(restApi);
+    WatchListRestApi.attach(restApi);
 
     vertx.createHttpServer()
       .requestHandler(restApi)

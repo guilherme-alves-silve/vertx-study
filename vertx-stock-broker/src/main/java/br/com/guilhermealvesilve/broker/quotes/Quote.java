@@ -1,4 +1,4 @@
-package br.com.guilhermealvesilve.quotes;
+package br.com.guilhermealvesilve.broker.quotes;
 
 import br.com.guilhermealvesilve.broker.assets.Asset;
 import io.vertx.core.json.JsonObject;

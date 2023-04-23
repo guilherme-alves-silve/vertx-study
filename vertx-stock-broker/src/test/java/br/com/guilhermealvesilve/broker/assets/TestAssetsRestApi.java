@@ -30,7 +30,7 @@ public class TestAssetsRestApi {
     client.get("/assets")
         .send()
         .onComplete(testContext.succeeding(response -> {
-          var expectedJson = "[{\"name\":\"AAPL\"},{\"name\":\"AMZN\"},{\"name\":\"NFLX\"},{\"name\":\"TSLA\"}]";
+          var expectedJson = "[{\"name\":\"AAPL\"},{\"name\":\"AMZN\"},{\"name\":\"FB\"},{\"name\":\"GOOG\"},{\"name\":\"MSFT\"},{\"name\":\"NFLX\"},{\"name\":\"TSLA\"}]";
           var json = response.bodyAsJsonArray();
           LOG.info("Response: {}", json);
           assertAll(
