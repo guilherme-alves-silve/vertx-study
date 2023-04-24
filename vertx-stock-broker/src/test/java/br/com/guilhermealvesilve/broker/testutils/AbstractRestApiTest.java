@@ -18,7 +18,7 @@ public abstract class AbstractRestApiTest {
     vertx.deployVerticle(new MainVerticle(), testContext.succeeding(id -> testContext.completeNow()));
   }
 
-  protected WebClient getWebClient(Vertx vertx) {
+  protected WebClient webClient(Vertx vertx) {
     return WebClient.create(vertx,
       new WebClientOptions().setDefaultPort(TEST_SERVER_PORT));
   }

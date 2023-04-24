@@ -22,7 +22,7 @@ public class TestWatchListRestApi extends AbstractRestApiTest {
 
   @Test
   void shouldAddsAndReturnWatchListForAccount(Vertx vertx, VertxTestContext testContext) {
-    var client = getWebClient(vertx);
+    var client = webClient(vertx);
     var accountId = UUID.randomUUID();
     final var path = "/account/watchlist/";
     client.put(path + accountId)
@@ -50,7 +50,7 @@ public class TestWatchListRestApi extends AbstractRestApiTest {
 
   @Test
   void shouldAddsAndDeleteWatchListForAccount(Vertx vertx, VertxTestContext testContext) {
-    var client = getWebClient(vertx);
+    var client = webClient(vertx);
     var accountId = UUID.randomUUID();
     final var path = "/account/watchlist/";
     client.put(path + accountId)

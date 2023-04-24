@@ -16,7 +16,7 @@ public class TestQuotesRestApi extends AbstractRestApiTest {
 
   @Test
   void shouldReturnQuoteForAsset(Vertx vertx, VertxTestContext testContext) {
-    var client = getWebClient(vertx);
+    var client = webClient(vertx);
     client.get("/quotes/AMZN")
         .send()
         .onComplete(testContext.succeeding(response -> {
@@ -35,7 +35,7 @@ public class TestQuotesRestApi extends AbstractRestApiTest {
 
   @Test
   void shouldReturnNotFoundForUnkownAsset(Vertx vertx, VertxTestContext testContext) {
-    var client = getWebClient(vertx);
+    var client = webClient(vertx);
     client.get("/quotes/UNKNOWN")
       .send()
       .onComplete(testContext.succeeding(response -> {

@@ -19,7 +19,7 @@ public class TestAssetsRestApi extends AbstractRestApiTest {
 
   @Test
   void shouldReturnAllAssets(Vertx vertx, VertxTestContext testContext) {
-    var client = getWebClient(vertx);
+    var client = webClient(vertx);
     client.get("/assets")
         .send()
         .onComplete(testContext.succeeding(response -> {
