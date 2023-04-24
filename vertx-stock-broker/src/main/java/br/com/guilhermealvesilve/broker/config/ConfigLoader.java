@@ -15,10 +15,11 @@ import java.util.List;
 public class ConfigLoader {
 
   public static final String SERVER_PORT = "SERVER_PORT";
+  public static final String CONFIG_FILE = "application.yml";
+
   static final List<String> EXPOSED_ENVIRONMENT_VARIABLES = List.of(
     SERVER_PORT
   );
-
   public static Future<BrokerConfig> load(Vertx vertx) {
     var exposedKeys = new JsonArray();
     EXPOSED_ENVIRONMENT_VARIABLES.forEach(exposedKeys::add);
@@ -35,9 +36,16 @@ public class ConfigLoader {
       .setConfig(new JsonObject()
         .put("cache", false));
 
+    var yamlStore = new ConfigStoreOptions()
+      .setType("file")
+      .setFormat("yaml")
+      .setConfig(new JsonObject()
+        .put("path", CONFIG_FILE));
+
     var retriever = ConfigRetriever.create(vertx,
       new ConfigRetrieverOptions()
         // Order defines overload rules
+        .addStore(yamlStore)
         .addStore(envStore)
         .addStore(propertyStore));
     return retriever.getConfig()

@@ -11,12 +11,13 @@ Based on the course [Learn Vert.x - Reactive microservices with Java](https://ww
 * [slf4j](https://www.slf4j.org/)
 * [log4j2](https://logging.apache.org/log4j/2.x/)
 * [logback](https://logback.qos.ch/)
+* [vegeta](https://github.com/tsenart/vegeta)
 
 ## Sections of the course
 1. [X] Introduction
 2. [X] Vert.x Core
-3. [ ] Vert.x Web
-4. [ ] Vert.x Config
+3. [X] Vert.x Web
+4. [X] Vert.x Config
 5. [ ] Vert.x Data - Reactive SQL Clients
 6. [ ] Vert.x Reactive - Mutiny
 7. [ ] Quarkus Reactive and Vert.x
@@ -63,6 +64,10 @@ To run your application:
 ```
 ./mvnw clean compile exec:java
 ```
+
+## Vegeta Load Testing
+
+`echo "GET http://localhost:8888/assets" | vegeta attack -workers=4 -max-workers=10 -duration=30s`
 
 ## GIT
 
