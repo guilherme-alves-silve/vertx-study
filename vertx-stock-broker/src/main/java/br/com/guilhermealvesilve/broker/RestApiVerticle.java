@@ -1,6 +1,8 @@
 package br.com.guilhermealvesilve.broker;
 
 import br.com.guilhermealvesilve.broker.assets.AssetsRestApi;
+import br.com.guilhermealvesilve.broker.config.BrokerConfig;
+import br.com.guilhermealvesilve.broker.config.ConfigLoader;
 import br.com.guilhermealvesilve.broker.quotes.QuotesRestApi;
 import br.com.guilhermealvesilve.broker.watchlist.WatchListRestApi;
 import io.vertx.core.AbstractVerticle;
@@ -17,10 +19,15 @@ public class RestApiVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) {
-    startHttpServerAndAttachRoutes(startPromise);
+    ConfigLoader.load(vertx)
+      .onFailure(startPromise::fail)
+      .onSuccess(config -> {
+        LOG.info("Retrieved configuration: {}", config);
+        startHttpServerAndAttachRoutes(startPromise, config);
+      });
   }
 
-  private void startHttpServerAndAttachRoutes(Promise<Void> startPromise) {
+  private void startHttpServerAndAttachRoutes(Promise<Void> startPromise, BrokerConfig config) {
     final Router restApi = Router.router(vertx);
     restApi.route()
       .handler(BodyHandler.create())
@@ -32,10 +39,10 @@ public class RestApiVerticle extends AbstractVerticle {
     vertx.createHttpServer()
       .requestHandler(restApi)
       .exceptionHandler(error -> LOG.error("HTTP Server error: ", error))
-      .listen(MainVerticle.PORT, http -> {
+      .listen(config.serverPort(), http -> {
         if (http.succeeded()) {
           startPromise.complete();
-          LOG.info("HTTP server started on port 8888");
+          LOG.info("HTTP server started on port {}", config.serverPort());
         } else {
           startPromise.fail(http.cause());
         }

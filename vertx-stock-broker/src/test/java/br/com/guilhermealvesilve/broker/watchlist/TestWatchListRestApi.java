@@ -1,37 +1,28 @@
 package br.com.guilhermealvesilve.broker.watchlist;
 
-import br.com.guilhermealvesilve.broker.MainVerticle;
 import br.com.guilhermealvesilve.broker.assets.Asset;
-import io.vertx.core.Future;
+import br.com.guilhermealvesilve.broker.testutils.AbstractRestApiTest;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.web.client.WebClient;
-import io.vertx.ext.web.client.WebClientOptions;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @ExtendWith(VertxExtension.class)
-public class TestWatchListRestApi {
-
-  @BeforeEach
-  void shouldDeployVerticle(Vertx vertx, VertxTestContext testContext) {
-    vertx.deployVerticle(new MainVerticle(), testContext.succeeding(id -> testContext.completeNow()));
-  }
+public class TestWatchListRestApi extends AbstractRestApiTest {
 
   @Test
-  void shouldAddsAndReturnWatchListForAccount(Vertx vertx, VertxTestContext testContext) throws Throwable {
-    var client = WebClient.create(vertx,
-      new WebClientOptions().setDefaultPort(MainVerticle.PORT));
+  void shouldAddsAndReturnWatchListForAccount(Vertx vertx, VertxTestContext testContext) {
+    var client = getWebClient(vertx);
     var accountId = UUID.randomUUID();
     final var path = "/account/watchlist/";
     client.put(path + accountId)
@@ -58,9 +49,8 @@ public class TestWatchListRestApi {
   }
 
   @Test
-  void shouldAddsAndDeleteWatchListForAccount(Vertx vertx, VertxTestContext testContext) throws Throwable {
-    var client = WebClient.create(vertx,
-      new WebClientOptions().setDefaultPort(MainVerticle.PORT));
+  void shouldAddsAndDeleteWatchListForAccount(Vertx vertx, VertxTestContext testContext) {
+    var client = getWebClient(vertx);
     var accountId = UUID.randomUUID();
     final var path = "/account/watchlist/";
     client.put(path + accountId)

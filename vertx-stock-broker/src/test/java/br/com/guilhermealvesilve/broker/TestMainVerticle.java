@@ -16,7 +16,7 @@ public class TestMainVerticle {
   }
 
   @Test
-  void shouldVerticleBeDeployed(Vertx vertx, VertxTestContext testContext) throws Throwable {
+  void shouldVerticleBeDeployed(Vertx vertx, VertxTestContext testContext) {
     testContext.completeNow();
   }
 }
