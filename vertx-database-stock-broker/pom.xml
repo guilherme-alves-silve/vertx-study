@@ -22,6 +22,8 @@
     <logback-classic.version>1.4.6</logback-classic.version>
     <slf4j-api.version>2.0.7</slf4j-api.version>
     <lombok.version>1.18.24</lombok.version>
+    <flyway.version>9.16.0</flyway.version>
+    <postgres.version>42.5.4</postgres.version>
 
     <main.verticle>br.com.guilhermealvesilve.broker.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
@@ -63,6 +65,18 @@
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-config-yaml</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>${flyway.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgres.version}</version>
     </dependency>
 
     <dependency>

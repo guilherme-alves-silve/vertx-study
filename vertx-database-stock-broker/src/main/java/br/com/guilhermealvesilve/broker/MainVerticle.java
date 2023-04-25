@@ -1,5 +1,7 @@
 package br.com.guilhermealvesilve.broker;
 
+import br.com.guilhermealvesilve.broker.config.ConfigLoader;
+import br.com.guilhermealvesilve.broker.db.FlywayMigration;
 import io.vertx.core.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +21,15 @@ public class MainVerticle extends AbstractVerticle {
     vertx.deployVerticle(VersionInfoVerticle.class.getName())
       .onFailure(startPromise::fail)
       .onSuccess(id -> LOG.info("Deployed {} with id {}", VersionInfoVerticle.class.getSimpleName(), id))
+      .compose(next -> migrateDatabase())
+      .onFailure(startPromise::fail)
+      .onSuccess(id -> LOG.info("Migrated db schema do latest version!"))
       .compose(next -> deployRestApiVerticle(startPromise));
+  }
+
+  private Future<Void> migrateDatabase() {
+    return ConfigLoader.load(vertx)
+      .compose(config -> FlywayMigration.migrate(vertx, config.dbConfig()));
   }
 
   private Future<String> deployRestApiVerticle(Promise<Void> startPromise) {
