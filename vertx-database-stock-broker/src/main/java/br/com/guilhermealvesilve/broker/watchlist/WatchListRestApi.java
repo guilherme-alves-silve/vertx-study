@@ -16,5 +16,10 @@ public class WatchListRestApi {
     parent.get(path).handler(new GetWatchListHandler(uuidAndWatchList));
     parent.put(path).handler(new PutWatchListHandler(uuidAndWatchList));
     parent.delete(path).handler(new DeleteWatchListHandler(uuidAndWatchList));
+
+    final var pgPath = "/pg/account/watchlist/:accountId";
+    parent.get(pgPath).handler(new GetWatchListFromDatabaseHandler(pool));
+    parent.put(pgPath).handler(new PutWatchListFromDatabaseHandler(pool));
+    parent.delete(pgPath).handler(new DeleteWatchListFromDatabaseHandler(pool));
   }
 }

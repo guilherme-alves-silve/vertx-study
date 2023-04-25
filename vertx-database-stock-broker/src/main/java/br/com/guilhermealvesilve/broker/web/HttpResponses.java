@@ -22,6 +22,11 @@ public final class HttpResponses {
     };
   }
 
+  public static Handler<Throwable> internalServerErrorHandler(final String msg,
+                                                              final RoutingContext context) {
+    return errorHandler(HttpResponseStatus.INTERNAL_SERVER_ERROR, msg, context);
+  }
+
   private static void errorResponse(HttpResponseStatus status, String msg, RoutingContext context) {
     context.response()
       .setStatusCode(status.code())

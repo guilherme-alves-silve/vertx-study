@@ -22,7 +22,7 @@ public class GetAssetsHandlerFromDatabaseHandler implements Handler<RoutingConte
 
     pool.query("SELECT name FROM broker.assets")
       .execute()
-      .onFailure(HttpResponses.errorHandler(HttpResponseStatus.INTERNAL_SERVER_ERROR, "Failed to get assets from database!", context))
+      .onFailure(HttpResponses.internalServerErrorHandler("Failed to get assets from database!", context))
       .onSuccess(result -> {
         var response = new JsonArray();
         result.forEach(row -> {
