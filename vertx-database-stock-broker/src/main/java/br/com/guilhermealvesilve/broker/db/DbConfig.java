@@ -1,5 +1,7 @@
 package br.com.guilhermealvesilve.broker.db;
 
+import lombok.Builder;
+
 import java.util.StringJoiner;
 
 public record DbConfig(String host,
@@ -8,10 +10,8 @@ public record DbConfig(String host,
                        String user,
                        String password) {
 
-  public static DbConfig defaultConfig() {
-    return new DbConfig("localhost", 5432,
-      "vertx-stock-broker", "postgres", "secret");
-  }
+  @Builder
+  public DbConfig { }
 
   @Override
   public String toString() {

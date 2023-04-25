@@ -5,7 +5,8 @@
       <pattern>%yellow(%d{HH:mm:ss.SSS}) %highlight(%level) %green([%thread]) %cyan(%logger{50}) - %msg%n</pattern>
     </encoder>
   </appender>
-
+  <logger name="br.com.guilhermealvesilve.broker" level="DEBUG"/>
+  <logger name="org.flywaydb.core" level="INFO"/>
   <logger name="io.netty" level="WARN"/>
   <logger name="io.vertx" level="INFO"/>
 

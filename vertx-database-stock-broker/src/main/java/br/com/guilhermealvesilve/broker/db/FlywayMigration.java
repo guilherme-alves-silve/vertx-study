@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class FlywayMigration {
 
   public static Future<Void> migrate(Vertx vertx, DbConfig dbConfig) {
+    LOG.debug("DB Config: {}", dbConfig);
     return vertx.<Void>executeBlocking(promise -> {
       //Flyway migration is blocking => uses JDBC
       execute(dbConfig);

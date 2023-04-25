@@ -14,12 +14,19 @@ import java.util.List;
 @Slf4j
 public class ConfigLoader {
 
-  public static final String SERVER_PORT = "SERVER_PORT";
   public static final String CONFIG_FILE = "application.yml";
-
+  // Exposed environment variables
+  public static final String SERVER_PORT = "SERVER_PORT";
+  public static final String DB_HOST = "DB_HOST";
+  public static final String DB_PORT = "DB_PORT";
+  public static final String DB_DATABASE = "DB_DATABASE";
+  public static final String DB_USER = "DB_USER";
+  public static final String DB_PASSWORD = "DB_PASSWORD";
   static final List<String> EXPOSED_ENVIRONMENT_VARIABLES = List.of(
-    SERVER_PORT
+    SERVER_PORT , DB_HOST, DB_PORT,
+    DB_DATABASE, DB_USER, DB_PASSWORD
   );
+
   public static Future<BrokerConfig> load(Vertx vertx) {
     var exposedKeys = new JsonArray();
     EXPOSED_ENVIRONMENT_VARIABLES.forEach(exposedKeys::add);
