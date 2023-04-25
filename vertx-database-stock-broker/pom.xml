@@ -67,6 +67,12 @@
       <artifactId>vertx-config-yaml</artifactId>
     </dependency>
 
+    <!-- Reactive client -->
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-pg-client</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.flywaydb</groupId>
       <artifactId>flyway-core</artifactId>
