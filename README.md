@@ -12,6 +12,8 @@ Based on the course [Learn Vert.x - Reactive microservices with Java](https://ww
 * [log4j2](https://logging.apache.org/log4j/2.x/)
 * [logback](https://logback.qos.ch/)
 * [vegeta](https://github.com/tsenart/vegeta)
+* [PostgreSQL](https://www.postgresql.org/)
+* [MySQL](https://www.mysql.com/)
 
 ## Sections of the course
 1. [X] Introduction

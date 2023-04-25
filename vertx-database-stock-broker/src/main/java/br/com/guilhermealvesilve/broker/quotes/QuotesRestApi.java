@@ -18,6 +18,7 @@ public class QuotesRestApi {
     final var cachedQuotes = new HashMap<String, Quote>();
     AssetsRestApi.ASSETS.forEach(asset -> cachedQuotes.put(asset, initRandomQuote(asset)));
     parent.get("/quotes/:asset").handler(new GetQuoteHandler(Collections.unmodifiableMap(cachedQuotes)));
+    parent.get("/pg/quotes/:asset").handler(new GetQuoteHandlerFromDatabase(pool));
   }
 
   private static Quote initRandomQuote(String assetParam) {

@@ -1,8 +1,7 @@
 package br.com.guilhermealvesilve.broker.quotes;
 
-import io.netty.handler.codec.http.HttpResponseStatus;
+import br.com.guilhermealvesilve.broker.web.HttpResponses;
 import io.vertx.core.Handler;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,12 +24,7 @@ public class GetQuoteHandler implements Handler<RoutingContext> {
 
     final var maybeQuote = Optional.ofNullable(cachedQuotes.get(assetParam));
     if (maybeQuote.isEmpty()) {
-      context.response()
-        .setStatusCode(HttpResponseStatus.NOT_FOUND.code())
-        .end(new JsonObject()
-          .put("message", "quote for asset " + assetParam + " not available!")
-          .put("path", context.normalizedPath())
-          .toBuffer());
+      HttpResponses.notFound("quote for asset " + assetParam + " not available!", context);
       return;
     }
 
