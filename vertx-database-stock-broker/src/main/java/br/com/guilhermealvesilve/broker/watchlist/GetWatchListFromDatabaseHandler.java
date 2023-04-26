@@ -31,7 +31,7 @@ public class GetWatchListFromDatabaseHandler extends AbstractWatchListFromDataba
 
         var response = new JsonArray();
         assets.forEach(response::add);
-        HttpResponses.okResponse(context, response);
+        HttpResponses.ok(context, response);
       });
   }
 }

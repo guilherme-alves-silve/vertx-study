@@ -1,7 +1,6 @@
 package br.com.guilhermealvesilve.broker.assets;
 
 import br.com.guilhermealvesilve.broker.web.HttpResponses;
-import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.core.Handler;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.web.RoutingContext;
@@ -29,7 +28,7 @@ public class GetAssetsHandlerFromDatabaseHandler implements Handler<RoutingConte
           response.add(row.getValue("name"));
         });
 
-        HttpResponses.okResponse(context, response);
+        HttpResponses.ok(context, response);
       });
   }
 }

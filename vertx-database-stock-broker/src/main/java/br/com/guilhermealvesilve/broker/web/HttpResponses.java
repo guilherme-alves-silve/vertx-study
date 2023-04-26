@@ -36,12 +36,13 @@ public final class HttpResponses {
         .toBuffer());
   }
 
-  private static void okResponse(final RoutingContext context,
-                                 final String encoded,
-                                 final Buffer responseBuffer) {
+  private static void ok(final RoutingContext context,
+                         final String encoded,
+                         final Buffer responseBuffer) {
     LOG.info("Path {} responds with {}", context.normalizedPath(), encoded);
     context.response()
       .putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
+      .setStatusCode(HttpResponseStatus.OK.code())
       .end(responseBuffer);
   }
 
@@ -50,13 +51,21 @@ public final class HttpResponses {
     errorResponse(HttpResponseStatus.NOT_FOUND, msg, context);
   }
 
-  public static void okResponse(final RoutingContext context,
-                                final JsonObject response) {
-    okResponse(context, response.encode(), response.toBuffer());
+  public static void ok(final RoutingContext context,
+                        final JsonObject response) {
+    ok(context, response.encode(), response.toBuffer());
   }
 
-  public static void okResponse(final RoutingContext context,
-                                final JsonArray response) {
-    okResponse(context, response.encode(), response.toBuffer());
+  public static void ok(final RoutingContext context,
+                        final JsonArray response) {
+    ok(context, response.encode(), response.toBuffer());
+  }
+
+  public static void notContent(RoutingContext context) {
+    LOG.info("Path {} responds with NO CONTENT", context.normalizedPath());
+    context.response()
+      .putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
+      .setStatusCode(HttpResponseStatus.NO_CONTENT.code())
+      .end();
   }
 }

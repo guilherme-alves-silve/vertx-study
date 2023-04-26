@@ -37,7 +37,7 @@ public class GetQuoteHandlerFromDatabase implements Handler<RoutingContext> {
         }
 
         var response = quotes.iterator().next().toJsonObject();
-        HttpResponses.okResponse(context, response);
+        HttpResponses.ok(context, response);
       });
   }
 }
