@@ -24,6 +24,7 @@
     <lombok.version>1.18.24</lombok.version>
     <flyway.version>9.16.0</flyway.version>
     <postgres.version>42.5.4</postgres.version>
+    <mysql.version>8.0.32</mysql.version>
 
     <main.verticle>br.com.guilhermealvesilve.broker.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
@@ -75,6 +76,11 @@
 
     <dependency>
       <groupId>io.vertx</groupId>
+      <artifactId>vertx-mysql-client</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.vertx</groupId>
       <artifactId>vertx-sql-client-templates</artifactId>
     </dependency>
 
@@ -85,9 +91,21 @@
     </dependency>
 
     <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-mysql</artifactId>
+      <version>${flyway.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>${postgres.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
     </dependency>
 
     <dependency>

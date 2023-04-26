@@ -2,15 +2,15 @@ package br.com.guilhermealvesilve.broker.watchlist;
 
 import io.vertx.core.Handler;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.pgclient.PgPool;
+import io.vertx.sqlclient.Pool;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 abstract class AbstractWatchListFromDatabaseHandler implements Handler<RoutingContext> {
 
-  protected final PgPool pool;
+  protected final Pool pool;
 
-  protected AbstractWatchListFromDatabaseHandler(PgPool pool) {
+  protected AbstractWatchListFromDatabaseHandler(Pool pool) {
     this.pool = pool;
   }
 

@@ -2,14 +2,14 @@ package br.com.guilhermealvesilve.broker.watchlist;
 
 import br.com.guilhermealvesilve.broker.web.HttpResponses;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.pgclient.PgPool;
+import io.vertx.sqlclient.Pool;
 import io.vertx.sqlclient.templates.SqlTemplate;
 
 import java.util.Map;
 
 public class DeleteWatchListFromDatabaseHandler extends AbstractWatchListFromDatabaseHandler {
 
-  public DeleteWatchListFromDatabaseHandler(PgPool pool) {
+  public DeleteWatchListFromDatabaseHandler(Pool pool) {
     super(pool);
   }
 

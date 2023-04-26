@@ -1,6 +1,7 @@
 package br.com.guilhermealvesilve.broker.config;
 
 import br.com.guilhermealvesilve.broker.db.DbConfig;
+import br.com.guilhermealvesilve.broker.db.DbType;
 import io.vertx.core.json.JsonObject;
 
 import static br.com.guilhermealvesilve.broker.config.ConfigLoader.SERVER_PORT;
@@ -22,6 +23,7 @@ public record BrokerConfig(int serverPort, String version, DbConfig dbConfig) {
       .database(config.getString(ConfigLoader.DB_DATABASE))
       .user(config.getString(ConfigLoader.DB_USER))
       .password(config.getString(ConfigLoader.DB_PASSWORD))
+      .type(DbType.valueOf(config.getString(ConfigLoader.DB_TYPE).toUpperCase()))
       .build();
   }
 }

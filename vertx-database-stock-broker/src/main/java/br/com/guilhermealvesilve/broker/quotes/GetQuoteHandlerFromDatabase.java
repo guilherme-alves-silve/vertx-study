@@ -4,7 +4,7 @@ import br.com.guilhermealvesilve.broker.web.HttpResponses;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.core.Handler;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.pgclient.PgPool;
+import io.vertx.sqlclient.Pool;
 import io.vertx.sqlclient.templates.SqlTemplate;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,9 +13,9 @@ import java.util.Collections;
 @Slf4j
 public class GetQuoteHandlerFromDatabase implements Handler<RoutingContext> {
 
-  private final PgPool pool;
+  private final Pool pool;
 
-  public GetQuoteHandlerFromDatabase(PgPool pool) {
+  public GetQuoteHandlerFromDatabase(Pool pool) {
     this.pool = pool;
   }
 

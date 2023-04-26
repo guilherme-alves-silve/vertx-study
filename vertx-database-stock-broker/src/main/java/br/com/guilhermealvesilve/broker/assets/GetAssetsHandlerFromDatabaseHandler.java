@@ -4,15 +4,15 @@ import br.com.guilhermealvesilve.broker.web.HttpResponses;
 import io.vertx.core.Handler;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.pgclient.PgPool;
+import io.vertx.sqlclient.Pool;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class GetAssetsHandlerFromDatabaseHandler implements Handler<RoutingContext> {
 
-  private final PgPool pool;
+  private final Pool pool;
 
-  public GetAssetsHandlerFromDatabaseHandler(PgPool pool) {
+  public GetAssetsHandlerFromDatabaseHandler(Pool pool) {
     this.pool = pool;
   }
 

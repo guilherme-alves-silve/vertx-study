@@ -3,7 +3,7 @@ package br.com.guilhermealvesilve.broker.watchlist;
 import br.com.guilhermealvesilve.broker.web.HttpResponses;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.pgclient.PgPool;
+import io.vertx.sqlclient.Pool;
 import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.templates.SqlTemplate;
 
@@ -11,7 +11,7 @@ import java.util.Collections;
 
 public class GetWatchListFromDatabaseHandler extends AbstractWatchListFromDatabaseHandler {
 
-  public GetWatchListFromDatabaseHandler(PgPool pool) {
+  public GetWatchListFromDatabaseHandler(Pool pool) {
     super(pool);
   }
 

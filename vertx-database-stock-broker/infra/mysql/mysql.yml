@@ -19,7 +19,7 @@ services:
     image: adminer:4
     restart: always
     ports:
-      - "8081:8080"
+      - "8082:8080"
 
 # permanent storage of data.
 # > docker volume rm mysql_vertx-stock-broker-data-local

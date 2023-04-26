@@ -8,7 +8,8 @@ public record DbConfig(String host,
                        int port,
                        String database,
                        String user,
-                       String password) {
+                       String password,
+                       DbType type) {
 
   @Builder
   public DbConfig { }
@@ -20,6 +21,7 @@ public record DbConfig(String host,
       .add("port=" + port)
       .add("database='" + database + "'")
       .add("user='" + user + "'")
+      .add("type='" + type + "'")
       .toString();
   }
 }

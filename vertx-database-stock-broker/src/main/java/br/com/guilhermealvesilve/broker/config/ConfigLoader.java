@@ -22,12 +22,13 @@ public class ConfigLoader {
   public static final String DB_DATABASE = "DB_DATABASE";
   public static final String DB_USER = "DB_USER";
   public static final String DB_PASSWORD = "DB_PASSWORD";
+  public static final String DB_TYPE = "DB_TYPE";
   static final List<String> EXPOSED_ENVIRONMENT_VARIABLES = List.of(
-    SERVER_PORT , DB_HOST, DB_PORT,
-    DB_DATABASE, DB_USER, DB_PASSWORD
+    SERVER_PORT , DB_HOST, DB_PORT, DB_DATABASE,
+    DB_USER, DB_PASSWORD, DB_TYPE
   );
 
-  public static Future<BrokerConfig> load(Vertx vertx) {
+  public static Future<BrokerConfig> load(final Vertx vertx) {
     var exposedKeys = new JsonArray();
     EXPOSED_ENVIRONMENT_VARIABLES.forEach(exposedKeys::add);
     LOG.debug("Fetch configuration for {}", exposedKeys.encode());

@@ -22,6 +22,7 @@ public abstract class AbstractRestApiTest {
     System.setProperty(ConfigLoader.DB_DATABASE, "vertx-stock-broker");
     System.setProperty(ConfigLoader.DB_USER, "postgres");
     System.setProperty(ConfigLoader.DB_PASSWORD, "secret");
+    System.setProperty(ConfigLoader.DB_TYPE, "postgresql");
     LOG.warn("***Tests are using local database!***");
     vertx.deployVerticle(new MainVerticle(), testContext.succeeding(id -> testContext.completeNow()));
   }
