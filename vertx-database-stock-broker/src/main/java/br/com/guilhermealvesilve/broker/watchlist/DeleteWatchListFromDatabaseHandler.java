@@ -1,7 +1,6 @@
 package br.com.guilhermealvesilve.broker.watchlist;
 
 import br.com.guilhermealvesilve.broker.web.HttpResponses;
-import io.vertx.core.json.JsonArray;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.pgclient.PgPool;
 import io.vertx.sqlclient.templates.SqlTemplate;
@@ -21,6 +20,6 @@ public class DeleteWatchListFromDatabaseHandler extends AbstractWatchListFromDat
       "DELETE FROM broker.watchlist WHERE account_id = #{account_id}")
       .execute(Map.of("account_id", accountId))
       .onFailure(HttpResponses.internalServerErrorHandler("Failed to fetch watchlist for accountId: " + accountId, context))
-      .onSuccess(none -> HttpResponses.notContent(context));
+      .onSuccess(result -> HttpResponses.noContent(context, result));
   }
 }

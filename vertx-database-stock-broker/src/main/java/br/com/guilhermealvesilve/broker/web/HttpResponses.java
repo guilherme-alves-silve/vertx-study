@@ -8,6 +8,7 @@ import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
+import io.vertx.sqlclient.SqlResult;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -61,11 +62,16 @@ public final class HttpResponses {
     ok(context, response.encode(), response.toBuffer());
   }
 
-  public static void notContent(RoutingContext context) {
+  public static void noContent(RoutingContext context) {
     LOG.info("Path {} responds with NO CONTENT", context.normalizedPath());
     context.response()
       .putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
       .setStatusCode(HttpResponseStatus.NO_CONTENT.code())
       .end();
+  }
+
+  public static void noContent(RoutingContext context, SqlResult<?> result) {
+    LOG.debug("Deleted {} rows", result.rowCount());
+    noContent(context);
   }
 }

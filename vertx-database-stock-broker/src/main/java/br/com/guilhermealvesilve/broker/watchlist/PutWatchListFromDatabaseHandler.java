@@ -29,6 +29,6 @@ public class PutWatchListFromDatabaseHandler extends AbstractWatchListFromDataba
           "ON CONFLICT(account_id, asset) DO NOTHING")
       .executeBatch(parameterBatch)
       .onFailure(HttpResponses.internalServerErrorHandler("Failed to fetch watchlist for accountId: " + accountId, context))
-      .onSuccess(none -> HttpResponses.notContent(context));
+      .onSuccess(none -> HttpResponses.noContent(context));
   }
 }
