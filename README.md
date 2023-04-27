@@ -21,7 +21,7 @@ Based on the course [Learn Vert.x - Reactive microservices with Java](https://ww
 3. [X] Vert.x Web
 4. [X] Vert.x Config
 5. [X] Vert.x Data - Reactive SQL Clients
-6. [ ] Vert.x Reactive - Mutiny
+6. [X] Vert.x Reactive - Mutiny
 7. [ ] Quarkus Reactive and Vert.x
 8. [ ] Vert.x Web Sockets
 9. [ ] Ending
