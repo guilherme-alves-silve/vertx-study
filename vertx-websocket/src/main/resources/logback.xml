@@ -1,0 +1,16 @@
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%yellow(%d{HH:mm:ss.SSS}) %highlight(%level) %green([%thread]) %cyan(%logger{50}) - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="br.com.guilhermealvessilve.vertx.websocket" level="DEBUG"/>
+  <logger name="io.netty" level="WARN"/>
+  <logger name="io.vertx" level="INFO"/>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+</configuration>

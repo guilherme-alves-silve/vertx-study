@@ -22,9 +22,9 @@ Based on the course [Learn Vert.x - Reactive microservices with Java](https://ww
 4. [X] Vert.x Config
 5. [X] Vert.x Data - Reactive SQL Clients
 6. [X] Vert.x Reactive - Mutiny
-7. [ ] Quarkus Reactive and Vert.x
-8. [ ] Vert.x Web Sockets
-9. [ ] Ending
+7. [X] Quarkus Reactive and Vert.x
+8. [X] Vert.x Web Sockets
+9. [X] Ending
 
 ## Building
 

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TestMainVerticle</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TestMainVerticle</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/br.com.guilhermealvessilve.vertx.websocket.html">br.com.guilhermealvessilve.vertx.websocket</a> &gt; TestMainVerticle</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">6.656s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">shouldConnectToWebSocketServer(Vertx, VertxTestContext)</td>
+<td class="success">0.622s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReceiveMultipleMessagesUsingWebSocket(Vertx, VertxTestContext)</td>
+<td class="success">6.034s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>?[33m19:51:46.939?[0;39m ?[34mINFO?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.MainVerticle?[0;39m - HTTP server started on port 8902
+?[33m19:51:47.112?[0;39m ?[34mINFO?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.WebSocketHandler?[0;39m - Opening web socket connection: /ws/simple/prices, __vertx.ws.03b32b3f-f859-4095-9de0-8edbe6c532de
+?[33m19:51:47.127?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: Connected!
+?[33m19:51:47.139?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.WebSocketHandler?[0;39m - Received message: ?? from client __vertx.ws.03b32b3f-f859-4095-9de0-8edbe6c532de
+?[33m19:51:47.141?[0;39m ?[34mINFO?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.WebSocketHandler?[0;39m - Closed __vertx.ws.03b32b3f-f859-4095-9de0-8edbe6c532de
+?[33m19:51:47.186?[0;39m ?[34mINFO?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.MainVerticle?[0;39m - HTTP server started on port 8902
+?[33m19:51:47.190?[0;39m ?[34mINFO?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.WebSocketHandler?[0;39m - Opening web socket connection: /ws/simple/prices, __vertx.ws.a69a8e00-fd18-49c4-ab90-4bfb5af08364
+?[33m19:51:47.192?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: Connected!
+?[33m19:51:47.192?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Not enough messages yet... (0/5)
+?[33m19:51:48.186?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.PriceBroadcast?[0;39m - Push update to 1 client(s)
+?[33m19:51:48.217?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: {&quot;symbol&quot;:&quot;AMZN&quot;,&quot;value&quot;:223}
+?[33m19:51:48.217?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Not enough messages yet... (1/5)
+?[33m19:51:49.192?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.PriceBroadcast?[0;39m - Push update to 1 client(s)
+?[33m19:51:49.193?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: {&quot;symbol&quot;:&quot;AMZN&quot;,&quot;value&quot;:479}
+?[33m19:51:49.193?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Not enough messages yet... (2/5)
+?[33m19:51:50.198?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.PriceBroadcast?[0;39m - Push update to 1 client(s)
+?[33m19:51:50.199?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: {&quot;symbol&quot;:&quot;AMZN&quot;,&quot;value&quot;:958}
+?[33m19:51:50.199?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Not enough messages yet... (3/5)
+?[33m19:51:51.187?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.PriceBroadcast?[0;39m - Push update to 1 client(s)
+?[33m19:51:51.188?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: {&quot;symbol&quot;:&quot;AMZN&quot;,&quot;value&quot;:802}
+?[33m19:51:51.188?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Not enough messages yet... (4/5)
+?[33m19:51:52.187?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.PriceBroadcast?[0;39m - Push update to 1 client(s)
+?[33m19:51:52.188?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: {&quot;symbol&quot;:&quot;AMZN&quot;,&quot;value&quot;:763}
+?[33m19:51:52.188?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Not enough messages yet... (5/5)
+?[33m19:51:53.188?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.PriceBroadcast?[0;39m - Push update to 1 client(s)
+?[33m19:51:53.189?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-1]?[0;39m ?[36mb.c.g.vertx.websocket.TestMainVerticle?[0;39m - Received message: {&quot;symbol&quot;:&quot;AMZN&quot;,&quot;value&quot;:666}
+?[33m19:51:53.190?[0;39m ?[39mDEBUG?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.WebSocketHandler?[0;39m - Received message: ?? from client __vertx.ws.a69a8e00-fd18-49c4-ab90-4bfb5af08364
+?[33m19:51:53.190?[0;39m ?[34mINFO?[0;39m ?[32m[vert.x-eventloop-thread-0]?[0;39m ?[36mb.c.g.vertx.websocket.WebSocketHandler?[0;39m - Closed __vertx.ws.a69a8e00-fd18-49c4-ab90-4bfb5af08364
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.3.2</a> at 29 de abr. de 2023 19:51:53</p>
+</div>
+</div>
+</body>
+</html>
