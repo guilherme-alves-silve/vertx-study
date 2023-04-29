@@ -14,6 +14,7 @@ Based on the course [Learn Vert.x - Reactive microservices with Java](https://ww
 * [vegeta](https://github.com/tsenart/vegeta)
 * [PostgreSQL](https://www.postgresql.org/)
 * [MySQL](https://www.mysql.com/)
+* [Quarkus](https://quarkus.io/)
 
 ## Sections of the course
 1. [X] Introduction
